@@ -10,7 +10,7 @@ services:
     volumes:
       - pg_data:/var/lib/postgresql/data
   backend:
-    build: ./backend/
+    image: bombamio/kittygram_backend:latest
     env_file: .env
     depends_on:
       - db
@@ -19,12 +19,12 @@ services:
       - media:/media
   frontend:
     env_file: .env
-    build: ./frontend/
+    image: bombamio/kittygram_frontend:latest
     command: cp -r /app/build/. /frontend_static/
     volumes:
       - static:/frontend_static
   gateway:
-    build: ./nginx/
+    image: bombamio/kittygram_gateway:latest
     env_file: .env
     ports:
       - 9000:80
