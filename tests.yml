@@ -1,4 +1,4 @@
 repo_owner: Bombamio
-kittygram_domain: http://yaninfrasprintfor.ddns.net:9000
-taski_domain: http://freetaskytestname.ddns.net:8000
+kittygram_domain: https://yaninfrasprintfor.ddns.net:9000
+taski_domain: https://freetaskytestname.ddns.net:8000
 dockerhub_username: bombamio
