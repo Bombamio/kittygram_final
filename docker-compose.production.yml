@@ -6,26 +6,28 @@ volumes:
 services:
   db:
     image: postgres:14
-    env_file: .env
+    env_file: .env.example
     volumes:
       - pg_data:/var/lib/postgresql/data
   backend:
     image: bombamio/kittygram_backend:latest
-    env_file: .env
+    env_file: .env.example
     depends_on:
       - db
     volumes:
       - static:/backend_static
       - media:/media
   frontend:
-    env_file: .env
+    env_file: .env.example
     image: bombamio/kittygram_frontend:latest
     command: cp -r /app/build/. /frontend_static/
     volumes:
       - static:/frontend_static
   gateway:
     image: bombamio/kittygram_gateway:latest
-    env_file: .env
+    env_file: .env.example
+    depends_on:
+      - backend
     ports:
       - 9000:80
     volumes:
