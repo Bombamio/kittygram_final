@@ -1,6 +1,5 @@
 # flake8: noqa
 import os
-import json
 from pathlib import Path
 
 from django.core.management.utils import get_random_secret_key
@@ -14,7 +13,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', get_random_secret_key())
 
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = json.loads(os.environ['ALLOWED_HOSTS'])
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(',')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
